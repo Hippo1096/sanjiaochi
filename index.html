@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>三角尺里的两组相等边 · 小学生也能懂</title>
+<style>
+  :root{ --ink:#2b3a55; --c1:#e8613c; --c2:#2f9e77; --c3:#7c5cbf; --bg:#faf7f0; --card:#fff; }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:"Microsoft YaHei","PingFang SC",sans-serif; color:var(--ink); background:var(--bg); line-height:1.8;}
+  .wrap{max-width:1000px; margin:0 auto; padding:28px 20px 60px;}
+  header{text-align:center; padding:30px 10px 8px;}
+  header h1{font-size:1.9em; letter-spacing:2px;}
+  header p{color:#7a8399; margin-top:6px; font-size:.95em;}
+  section{background:var(--card); border-radius:14px; padding:24px 26px; margin-top:22px; box-shadow:0 2px 10px rgba(43,58,85,.06);}
+  h2{font-size:1.22em; margin-bottom:12px; border-left:5px solid var(--c1); padding-left:10px;}
+  .row{display:flex; flex-wrap:wrap; gap:22px; align-items:flex-start;}
+  .row>div{flex:1 1 340px;}
+  svg{max-width:100%; height:auto; display:block; margin:0 auto;}
+  .hint{font-size:.88em; color:#7a8399; text-align:center; margin-top:4px;}
+  .kids{background:#eef7f2; border-radius:10px; padding:14px 18px; border-left:4px solid var(--c2); margin-top:10px;}
+  .kids::before{content:"讲给小学生 👦"; display:block; font-weight:700; color:var(--c2); font-size:.9em; margin-bottom:4px;}
+  .teacher{background:#f6f2fb; border-radius:10px; padding:12px 16px; border-left:4px solid var(--c3); margin-top:10px; font-size:.9em;}
+  .teacher::before{content:"教师注 📐"; display:block; font-weight:700; color:var(--c3); font-size:.9em; margin-bottom:4px;}
+  input[type=range]{width:100%; accent-color:var(--c1);}
+  .num{font-variant-numeric:tabular-nums; font-weight:700;}
+  details{margin-top:14px; background:#f7f5ee; border-radius:10px; padding:10px 16px;}
+  summary{cursor:pointer; font-weight:700; color:#6b7280;}
+  ol li, ul li{margin:4px 0 4px 1.2em;}
+  table{border-collapse:collapse; width:100%; margin-top:8px; font-size:.95em;}
+  th,td{border:1px solid #e3e0d6; padding:6px 10px; text-align:center;}
+  th{background:#f3efe6;}
+  footer{text-align:center; color:#9aa2b3; font-size:.85em; margin-top:34px;}
+  .big{font-size:1.25em; text-align:center; margin:8px 0; font-weight:700;}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>📐 三角尺里的数学奥秘 · 完整版</h1>
+  <p>两组相等的边 + 为什么偏偏是这两把尺 —— 小学生也能懂的互动报告</p>
+</header>
+
+<!-- 零、驱动问题 -->
+<section style="border-left:6px solid var(--c1)">
+  <h2 style="border-left:none; padding-left:0">开场：一个同学的好问题</h2>
+  <div class="kids" style="background:#fdf3ee; border-left-color:var(--c1)">
+    <p style="color:var(--c1); font-weight:400"><b>「老师，所有三角形的内角和都是 180°，那为什么不造一把 90°、70°、20° 的三角尺？它也是合法的三角形呀！」</b></p>
+  </div>
+  <p style="margin-top:8px">问得好！<b>180° 只是「入场券」</b>——保证它是三角形；但能不能被选成三角尺，要看它<b>「好不好用」</b>。先卖个关子：看完下面藏在尺子里的两组相等的边，再回来"审判"这把 70° 尺。</p>
+</section>
+
+<!-- 一、两组相等是什么 -->
+<section>
+  <h2>一、先动手发现：两个小秘密</h2>
+  <p>拿出一副三角尺（30°尺 + 45°尺），做两件事——</p>
+  <div class="row">
+    <div>
+      <svg id="svgrulers" viewBox="0 0 460 240"></svg>
+      <div style="text-align:center">
+        <label><input type="radio" name="hl" value="0" checked onchange="hl(0)"> 原样</label>
+        <label><input type="radio" name="hl" value="1" onchange="hl(1)"> 秘密一：30°尺长边 = 45°尺斜边</label>
+        <label><input type="radio" name="hl" value="2" onchange="hl(2)"> 秘密二：两把尺的高一样</label>
+      </div>
+    </div>
+    <div>
+      <p><b>秘密一</b>：把 45° 尺的<b>斜边</b>，靠到 30° 尺的<b>长直角边</b>上——严丝合缝，一样长！</p>
+      <p><b>秘密二</b>：把两把尺都<b>斜边朝下立在桌面上</b>，从最高的那个直角顶点到桌面比一比——一样高！</p>
+      <div class="kids">
+        <p>「高」就是尺子立起来时有多高：从直角的那个尖尖，垂直落到底边（桌面）的一条线。就像人的个子，从头顶到脚底。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 二、秘密一的解释 -->
+<section>
+  <h2>二、秘密一：不是巧合，是设计！</h2>
+  <div class="row">
+    <div>
+      <p><b>两把尺都是从"最正"的图形上切下来的</b>：</p>
+      <ul>
+        <li>正方形<b>沿对角线</b>切一半 → 45°尺</li>
+        <li>等边三角形<b>沿高</b>切一半 → 30°尺</li>
+      </ul>
+      <p style="margin-top:6px"><b>不用切，折也行</b>（动手试）：正方形纸沿对角线<b>对折一次</b>，就折出一把"45°尺"；等边三角形纸片沿中间的高<b>对折</b>，就折出一把"30°尺"（等边三角形纸可由正方形纸折出：对折出中线后，把下面的两个角分别折向中线，让底边立起来——出现 60°，再对折即可）。两把尺都来自<b>最对称的两个图形</b>，你自己一张纸就能"造尺"。</p>
+      <p style="margin-top:8px">切出来的形状，<b>边的长短比例</b>就定死了，但<b>整体做多大</b>厂家说了算。厂家故意把两把尺的大小调配好，让 30° 尺的长直角边和 45° 尺的斜边<b>恰好一样长</b>。</p>
+      <p style="margin-top:8px">把这条相等的边记作 <b class="num">10</b>（厘米），量一量整副尺：</p>
+      <table>
+        <tr><th></th><th>45°尺</th><th>30°尺</th></tr>
+        <tr><td>相等的边</td><td>斜边 = <b>10</b></td><td>长直角边 = <b>10</b></td></tr>
+        <tr><td>别的边</td><td>腰约 <b>7</b>、腰约 <b>7</b></td><td>短边约 <b>5.8</b>，斜边约 <b>11.5</b></td></tr>
+        <tr><td>高（下一节）</td><td><b>5</b></td><td><b>5</b></td></tr>
+      </table>
+      <div class="kids">
+        <p>所以这不是碰运气，是<b>设计出来的</b>！好处：两把尺能<b>肩并肩贴在一起</b>（拼出新图形）、<b>刻度对齐</b>、叠起来收纳刚好成套。中考卷子里"两块三角板拼接"的图，画的就是这个实物。</p>
+      </div>
+      <div class="teacher">
+        <p>边比：45°尺 1:1:√2，30°尺 1:√3:2。设相等边 L：45°尺腰=L÷√2≈0.71L；30°尺短边=L÷√3≈0.58L、斜边≈1.15L。等长+刻度对齐是成套三角板的正式设计规格（见实用新型专利 CN201214348Y）。</p>
+      </div>
+    </div>
+    <div>
+      <svg id="svgfit" viewBox="0 0 460 240"></svg>
+      <p class="hint">30°尺的长边贴着 45°尺的斜边——严丝合缝（无缝拼接）</p>
+    </div>
+  </div>
+</section>
+
+<!-- 三、秘密二的解释 -->
+<section>
+  <h2>三、秘密二：一半对一半，所以一样高</h2>
+  <p>这是最妙的地方：<b>秘密二其实是秘密一送出的礼物</b>。三步就能讲明白——</p>
+  <ol>
+    <li><b>45°尺：折一折。</b>它是等腰的，沿着高对折，两边<b>完全重合</b>——高把斜边分成相等的两段，所以<b>高 = 斜边的一半</b>。</li>
+    <li><b>30°尺：量一量。</b>画出高，量一量——高<b>也正好是长直角边的一半</b>！（不信就量：长边 10，高量出来就是 5）</li>
+    <li><b>连起来想：</b>秘密一说，45°尺的斜边 = 30°尺的长边。那么——<b>斜边的一半 = 长边的一半</b>。一半对一半，两把尺当然一样高！</li>
+  </ol>
+  <div class="big">两把尺的高，都正好是那条一样长的边的一半 🎁</div>
+  <div class="teacher">
+    <p>30°尺的高=长直角边的一半，严格证明用面积不变（五六年级知识）：面积 = 短边×长边÷2，也 = 斜边×高÷2。代入短边=L/√3、斜边=2L/√3，解得高 = L/2。45°尺高 = 腰÷√2 = (L/√2)/√2 = L/2，两高恒等于 L/2。</p>
+  </div>
+</section>
+
+<!-- 四、互动：缩一缩 -->
+<section>
+  <h2>四、互动：把尺子做大做小，高永远一样</h2>
+  <p>拖动滑块，改变那条"一样长的边"（两把尺会一起按真实比例变大变小）。看着两条高的数字——<b>不管怎么缩，永远相等</b>。</p>
+  <div class="row">
+    <div>
+      <p style="text-align:center">相等的边 L = <b class="num" id="Lval">10</b> 厘米</p>
+      <input type="range" id="Lslider" min="6" max="20" step="0.5" value="10" oninput="rescale(this.value)">
+      <svg id="svgpair" viewBox="0 0 460 260" style="margin-top:8px"></svg>
+      <p class="hint">虚线是高；桌面上方两把尺一起"长个儿"，但永远一样高</p>
+    </div>
+    <div>
+      <table id="tbl">
+        <tr><th></th><th>45°尺</th><th>30°尺</th></tr>
+        <tr><td>斜边 / 长直角边</td><td class="num" id="c1">10.0</td><td class="num" id="c2">10.0</td></tr>
+        <tr><td>高</td><td class="num" id="h1">5.00</td><td class="num" id="h2">5.00</td></tr>
+      </table>
+      <div class="kids">
+        <p>发现了吗？不管尺子变大还是变小，<b>高的数字始终一模一样</b>——因为它们都是"那条边的一半"。这就是数学里说的"规律"：变的是大小，不变的是关系。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 五、动动手 -->
+<section>
+  <h2>五、课堂三步验证法（动动手）</h2>
+  <ol>
+    <li><b>量一量</b>：用尺量出 45°尺斜边和 30°尺长直角边，发现秘密一。</li>
+    <li><b>立一立</b>：两把尺斜边朝下立在桌上（或靠在书上），用另一把尺比高，发现秘密二。</li>
+    <li><b>折一折、画一画</b>：纸片剪出两把"尺"，45°尺沿高对折验证"高=斜边一半"；30°尺画出高量一量，验证"高=长边一半"。三步串起来，两个秘密就都讲通了。</li>
+  </ol>
+</section>
+
+<!-- 六、更多奥秘 -->
+<section>
+  <h2>六、这副尺还藏着更多（拓展）</h2>
+  <details>
+    <summary>▸ 能拼出 11 个角，全是 15° 的倍数（含被小学生"推翻标准答案"的 165°）</summary>
+    <p>两把尺自带 30°、45°、60°、90°，加减组合能拼出 15、30、45、60、75、90、105、120、135、150、165 共 11 个角。</p>
+    <p><b>为什么全是 15 的倍数？——最小零件的秘密。</b>30、45、60、90 这些角，都装着同样大小的"最小零件"<b>15°</b>：30=15×2，45=15×3，60=15×4，90=15×6。零件加加减减，不会变出更小的零件——所以拼出的角永远<b>是 15 的倍数</b>；而 15° 自己也能拼出来（45−30），一个不缺。反过来，20°、100° 这类角<b>永远拼不出来</b>。</p>
+    <p>2022 年成都华阳小学的课堂上，孩子们发现"标准答案"里少了 165°：米之贤同学把 45°尺的 45°边和 30°尺的 60°边重合，拼出了 165°；廖钧宇同学用内角和算出 180°−15°=165° 严格证明。教材编写组回信肯定，并承诺修订时采纳。<b>标准答案也可以被质疑——动手验证＋严格证明，才是数学。</b></p>
+  </details>
+  <details>
+    <summary>▸ 拼角背后的三个数学思想（教研向）</summary>
+    <p>分类思想（按用哪个角拼分组，不重不漏）、集合思想（{30,60,90}×{45,45,90} 两两组合）、归纳思想（结果排序后发现 15° 倍数规律）。</p>
+  </details>
+  <details>
+    <summary>▸ 命题与初中衔接</summary>
+    <p>中考原型（2013·怀柔一模）：两尺沿相等边拼接，动点在公共边上运动求角度与长度（答案涉 √10/2、15°）。初中口诀：30°尺"长边=短边×√3，斜边=短边×2"；45°尺"斜边=腰×√2"。</p>
+  </details>
+</section>
+
+<!-- 七、反面对照与设计题 -->
+<section>
+  <h2>七、回到开场的问题：70°·20° 尺，判它几条"不及格"？</h2>
+  <p>现在揭晓答案。拿我们的"好用三标准"（来历正不正、拼角全不全、边成不成比）审判 90°·70°·20°：</p>
+  <div class="row" style="margin-top:10px">
+    <div class="kids" style="flex:1 1 260px"><p><b>❌ 拼角失败</b>：70 和 20 的"最小零件"是 10°——拼来拼去只能得 10° 的倍数，30°、45°、60°、90° 一个都拼不出，一套尺画不了几个常用角。</p></div>
+    <div class="kids" style="flex:1 1 260px"><p><b>❌ 来历别扭</b>：它不能由正方形或等边三角形对折得到；而且光用直尺和圆规<b>永远画不出</b>准确的 20° 角——这是数学上著名的"三等分角"不可能问题（中学以后的彩蛋）。</p></div>
+    <div class="kids" style="flex:1 1 260px"><p><b>❌ 边不成比</b>：两把标准尺的边长有干净的比（1:1:√2 和 1:√3:2），20° 尺的三边写不出这样简单干净的比，刻度和拼接都乱了套。</p></div>
+  </div>
+  <p class="big" style="margin-top:14px">180° 保证"合法"，"好用"才是入选标准 ✅</p>
+  <div class="kids" style="margin-top:10px">
+    <p><b>课堂挑战：如果让你设计第三把三角尺，你会选哪三个角？</b>（提示：①想想它要能跟 30°、45° 配合拼角——最小零件最好是 15° 的朋友；②想想它能不能由对折得到；③别超过 180° 哦。）</p>
+  </div>
+  <div class="teacher">
+    <p>知识点对应（人教版参考）：角的度量（四上）· 三角形内角和、三角形的高（四下）· 三角形面积（五上）· 因数与倍数（五下，"最小零件"即最大公约数）· 尺规作图不可行性（三等分角）为初中及以上拓展。本报告与 Kimi 参考页（ok.kimi.link）互为补充：彼重"为什么选这两把"，此重"两组相等边与联动验证"。</p>
+  </div>
+</section>
+
+<footer>102301-三角板里的数学奥秘 · 110403 完整版（吸收参考页亮点：驱动问题/反面对照/最小零件视角/设计题）· 资料来源：资料搜集包 13 条 + 用户口径 + 参考页</footer>
+</div>
+
+<script>
+const NS = "http://www.w3.org/2000/svg";
+function el(tag, attrs, parent){ const e = document.createElementNS(NS, tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
+function txt(svg,x,y,s,fill,size,w){ const t = el("text",{x,y,"font-size":size||13,fill:fill||"#2b3a55"},svg);
+  if(w) t.setAttribute("font-weight",w); t.textContent = s; return t; }
+
+// ---------- 板块一：两把尺平放 + 高亮 ----------
+function drawRulers(){
+  const svg = document.getElementById("svgrulers"); svg.innerHTML = "";
+  // 45°尺（左，平放）：腰70，斜边≈99
+  const A = [[20,180],[90,180],[20,110]];
+  // 30°尺（右，平放）：短边40 长边≈69.3 斜边80
+  const B = [[190,180],[190,110.7],[259.3,180]];
+  el("polygon",{points:A.map(p=>p.join(",")).join(" "), fill:"#dbeafe", stroke:"#3b82f6","stroke-width":2},svg);
+  el("polygon",{points:B.map(p=>p.join(",")).join(" "), fill:"#dcfce7", stroke:"#22c55e","stroke-width":2},svg);
+  txt(svg,32,168,"45°","#3b82f6"); txt(svg,52,168,"45°","#3b82f6"); txt(svg,30,124,"90°","#3b82f6");
+  txt(svg,198,172,"30°","#16a34a"); txt(svg,212,132,"60°","#16a34a"); txt(svg,196,102,"90°","#16a34a");
+  const g1a = el("line",{x1:B[0][0],y1:B[0][1],x2:B[1][0],y2:B[1][1], stroke:"#e8613c","stroke-width":6, opacity:0, id:"g1a"},svg); // 30尺长边
+  const g1b = el("line",{x1:A[1][0],y1:A[1][1],x2:A[2][0],y2:A[2][1], stroke:"#e8613c","stroke-width":6, opacity:0, id:"g1b"},svg); // 45尺斜边
+  const t1  = txt(svg,290,50,"秘密一：这两条一样长","#e8613c",14,1); t1.setAttribute("opacity",0); t1.setAttribute("id","t1");
+  // 高（两尺斜边朝下的示意：右上角小图）
+  const g2a = el("line",{x1:290,y1:170,x2:290,y2:110, stroke:"#2f9e77","stroke-width":5, opacity:0,"stroke-dasharray":"6 4"},svg);
+  const g2b = el("line",{x1:390,y1:170,x2:390,y2:110, stroke:"#2f9e77","stroke-width":5, opacity:0,"stroke-dasharray":"6 4"},svg);
+  const t2  = txt(svg,290,96,"秘密二：一样高","#2f9e77",14,1); t2.setAttribute("opacity",0); t2.setAttribute("id","t2");
+  el("line",{x1:270,y1:170,x2:420,y2:170, stroke:"#b8b2a4","stroke-width":3, opacity:0, id:"desk"},svg);
+  svg._ids = ["g1a","g1b","t1","g2a","g2b","t2","desk"];
+}
+function hl(i){
+  const svg = document.getElementById("svgrulers");
+  svg._ids.forEach(id=>svg.querySelector("#"+id).setAttribute("opacity",0));
+  if (i==1){ ["g1a","g1b","t1"].forEach(id=>svg.querySelector("#"+id).setAttribute("opacity",1)); }
+  if (i==2){ ["g2a","g2b","t2","desk"].forEach(id=>svg.querySelector("#"+id).setAttribute("opacity",1)); }
+}
+drawRulers();
+
+// ---------- 板块二：无缝拼接示意 ----------
+(function(){
+  const svg = document.getElementById("svgfit");
+  // 45°尺斜边（长99）竖直放右侧，30°尺长边（69.3→示意放大成同长）贴左 —— 用重叠法示意"贴合"
+  // 简化示意：两尺的相等边重合为公共竖边
+  const px=250, py=30, len=150;                       // 公共竖边
+  el("line",{x1:px,y1:py,x2:px,y2:py+len, stroke:"#8a8375","stroke-width":3},svg);
+  const s45 = el("polygon",{points:`${px},${py} ${px},${py+len} ${px-len/2},${py+len/2}`, fill:"#dbeafe", stroke:"#3b82f6","stroke-width":2},svg); // 45尺在左
+  const s30 = el("polygon",{points:`${px},${py} ${px},${py+len} ${px+60},${py+len}`, fill:"#dcfce7", stroke:"#22c55e","stroke-width":2},svg);       // 30尺在右（示意）
+  txt(svg,px-118,py+len/2,"45°尺","#3b82f6",14,1);
+  txt(svg,px+40,py+len/2+30,"30°尺","#16a34a",14,1);
+  txt(svg,px+6,py+len/2,"公①共②边③：一样长，刻度对齐","#e8613c",13,1);
+  txt(svg,230,215,"拼在一起 = 新图形（无缝）","#7a8399",12);
+})();
+
+// ---------- 板块四：联动缩放 ----------
+function rescale(L){
+  document.getElementById("Lval").textContent = L;
+  const svg = document.getElementById("svgpair"); svg.innerHTML = "";
+  const s = 150/L;                                     // 画布缩放：L=10 → 150px
+  const h = (L/2)*s, y0 = 210, deskY = 230;
+  el("line",{x1:20,y1:deskY,x2:440,y2:deskY, stroke:"#b8b2a4","stroke-width":3},svg);   // 桌面
+  txt(svg,24,246,"桌面","#9a9284",12);
+  // 45°尺：斜边 L 朝下
+  const xA = 60, wA = L*s;
+  el("polygon",{points:`${xA},${y0} ${xA+wA},${y0} ${xA+wA/2},${y0-h}`, fill:"#dbeafe", stroke:"#3b82f6","stroke-width":2},svg);
+  el("line",{x1:xA+wA/2,y1:y0,x2:xA+wA/2,y2:y0-h, stroke:"#2f9e77","stroke-width":4,"stroke-dasharray":"6 4"},svg);
+  txt(svg,xA+wA/2-18,y0+18,"45°尺","#3b82f6",13,1);
+  txt(svg,xA+wA/2+6,y0-h/2,"高 "+(L/2).toFixed(2),"#2f9e77",13,1);
+  // 30°尺：斜边 2L/√3 朝下，垂足在斜边 m=L/(2√3) 处
+  const xB = 270, wB = (2*L/Math.sqrt(3))*s, m = (L/(2*Math.sqrt(3)))*s;
+  el("polygon",{points:`${xB},${y0} ${xB+wB},${y0} ${xB+m},${y0-h}`, fill:"#dcfce7", stroke:"#22c55e","stroke-width":2},svg);
+  el("line",{x1:xB+m,y1:y0,x2:xB+m,y2:y0-h, stroke:"#2f9e77","stroke-width":4,"stroke-dasharray":"6 4"},svg);
+  txt(svg,xB+wB/2-20,y0+18,"30°尺","#16a34a",13,1);
+  txt(svg,xB+m+6,y0-h/2,"高 "+(L/2).toFixed(2),"#2f9e77",13,1);
+  // 相等边标注
+  txt(svg,xA+wA/2-24,y0-6,"L="+L,"#e8613c",12,1);
+  txt(svg,xB+wB-84,y0-6,"L="+L,"#e8613c",12,1);
+  // 表格
+  document.getElementById("c1").textContent = L.toFixed(1);
+  document.getElementById("c2").textContent = L.toFixed(1);
+  document.getElementById("h1").textContent = (L/2).toFixed(2);
+  document.getElementById("h2").textContent = (L/2).toFixed(2);
+}
+rescale(10);
+</script>
+</body>
+</html>
