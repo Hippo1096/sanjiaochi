@@ -248,6 +248,7 @@ drawRulers();
 
 // ---------- 板块四：联动缩放 ----------
 function rescale(L){
+  L = parseFloat(L);  // 2026-11-04 云端修复：滑块 this.value 是字符串，原稿直接 L.toFixed 抛错致表格不更新
   document.getElementById("Lval").textContent = L;
   const svg = document.getElementById("svgpair"); svg.innerHTML = "";
   const s = 150/L;                                     // 画布缩放：L=10 → 150px
